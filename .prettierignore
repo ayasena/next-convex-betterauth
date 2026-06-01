@@ -1,3 +1,8 @@
+.agents/skills/
+convex/
+convex/_generated/
+example/convex/_generated/
+
 dist/
 node_modules/
 .next/
@@ -5,3 +10,6 @@ node_modules/
 coverage/
 pnpm-lock.yaml
 .pnpm-store/
+
+*.nix
+.gitignore

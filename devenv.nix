@@ -1,19 +1,20 @@
 {
   pkgs,
-  lib,
-  config,
-  inputs,
+  # lib,
+  # config,
+  # inputs,
   ...
 }:
 
 {
   # https://devenv.sh/basics/
-  env.GREET = "devenv";
+  env.GREET = "jls-dashboard";
 
   # https://devenv.sh/packages/
   packages = with pkgs; [
     git
     bun
+    nodejs
   ];
 
   # https://devenv.sh/languages/
@@ -23,20 +24,7 @@
   # processes.dev.exec = "${lib.getExe pkgs.watchexec} -n -- ls -la";
 
   # https://devenv.sh/services/
-  services.postgres = {
-    enable = true;
-    listen_addresses = "127.0.0.1";
-    port = 5432;
-    initialDatabases = [
-      {
-        name = "jls_dashboard";
-      }
-    ];
-    initialScript = ''
-      CREATE USER postgres SUPERUSER PASSWORD 'postgres';
-      CREATE DATABASE jls_dashboard OWNER postgres;
-    '';
-  };
+  # services.postgres.enable = true;
 
   # https://devenv.sh/scripts/
   scripts.hello.exec = ''
@@ -62,8 +50,10 @@
   '';
 
   # https://devenv.sh/git-hooks/
-  git-hooks.hooks.prettier.enable = true;
-  git-hooks.hooks.eslint.enable = true;
+  git-hooks.hooks.prettier = {
+    enable = true;
+    entry = "bun format";
+  };
 
   # See full reference at https://devenv.sh/reference/options/
 }
