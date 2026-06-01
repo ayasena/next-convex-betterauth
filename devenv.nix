@@ -8,7 +8,7 @@
 
 {
   # https://devenv.sh/basics/
-  env.GREET = "jls-dashboard";
+  env.GREET = "next-convex-betterauth";
 
   # https://devenv.sh/packages/
   packages = with pkgs; [
