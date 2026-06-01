@@ -1,6 +1,6 @@
 {
   pkgs,
-  # lib,
+  lib,
   # config,
   # inputs,
   ...
@@ -21,7 +21,7 @@
   # languages.rust.enable = true;
 
   # https://devenv.sh/processes/
-  # processes.dev.exec = "${lib.getExe pkgs.watchexec} -n -- ls -la";
+  processes.dev.exec = "bun x convex dev";
 
   # https://devenv.sh/services/
   # services.postgres.enable = true;
@@ -53,6 +53,10 @@
   git-hooks.hooks.prettier = {
     enable = true;
     entry = "bun format";
+  };
+  git-hooks.hooks.eslint = {
+    enable = true;
+    entry = "bun lint";
   };
 
   # See full reference at https://devenv.sh/reference/options/
